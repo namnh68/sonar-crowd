@@ -113,7 +113,12 @@ public class CrowdRealm extends SecurityRealm {
 
   @Override
   public ExternalGroupsProvider getGroupsProvider() {
-    return groupsProvider;
+    if(this.crowdConfiguration.getCrowdGrpSync() == "true") {
+      LOG.info("Sync group from Crowd enabled.");
+	    return groupsProvider;
+    }
+    LOG.info("Sync groups from Crowd disabled.");
+	  return null;
   }
 
   @Override

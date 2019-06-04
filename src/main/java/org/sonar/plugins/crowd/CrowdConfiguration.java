@@ -31,6 +31,7 @@ public class CrowdConfiguration {
   static final String KEY_CROWD_URL = "crowd.url";
   static final String KEY_CROWD_APP_NAME = "crowd.application";
   static final String KEY_CROWD_APP_PASSWORD = "crowd.password";
+  static final String KEY_CROWD_SYNC_GROUP = "crowd.sync";
   static final String FALLBACK_NAME = "sonar";
   private final Configuration settings;
 
@@ -69,5 +70,9 @@ public class CrowdConfiguration {
     return settings
             .get(KEY_CROWD_URL)
             .orElseThrow(() -> new IllegalArgumentException(KEY_CROWD_URL + " is not set"));
+  }
+
+  public String getCrowdGrpSync() {
+    return settings.get(KEY_CROWD_SYNC_GROUP).orElse("true");
   }
 }
